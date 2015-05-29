@@ -10,6 +10,8 @@ Usage
 
 First, get yourself a `QPX Express Airfare API <https://developers.google.com/qpx-express/>`_.
 
+Test your json request https://qpx-express-demo.itasoftware.com/
+
 ::
 
     from google_flight import google_flight_api
