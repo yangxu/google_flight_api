@@ -80,9 +80,11 @@ class GoogleFlight(object):
 
    def lowest(self):
       if self.trips != None:
-        trip = self.data["trips"]["tripOption"][0]
-        
-        return Struct(**trip)
+        lowest = self.data["trips"]["tripOption"][0]
+        for trip in self.data["trips"]["tripOption"]:
+           if trip['saleTotal'] < lowest['saleTotal']:
+              lowest = trip
+        return Struct(**lowest)
       else:
          print "No data yet"
 
