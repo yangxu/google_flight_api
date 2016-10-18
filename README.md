@@ -17,29 +17,32 @@ Test your json request https://qpx-express-demo.itasoftware.com/
     from google_flight import google_flight_api
 
 
-    g = GoogleFlight("MY_API_KEY")
+    g = google_flight_api.GoogleFlight("MY_API_KEY")
     data = {
-             "request":
-             {
-                "passengers":
-                {
-                   "adultCount": 1
+              "request": {
+                "slice": [
+                  {
+                    "origin": "PVD",
+                    "destination": "MCO",
+                    "date": "2016-12-04"
+                  },
+                  {
+                    "origin": "MCO",
+                    "destination": "PVD",
+                    "date": "2016-12-24"
+                  }
+                ],
+                "passengers": {
+                  "adultCount": 1,
+                  "infantInLapCount": 0,
+                  "infantInSeatCount": 0,
+                  "childCount": 0,
+                  "seniorCount": 0
                 },
-                "slice":
-                [
-                   {
-                      "origin": "BOS",
-                      "destination": "PVD",
-                      "date": "2015-08-04"
-                   },
-                   {
-                      "origin": "PVD",
-                      "destination": "GNV",
-                      "date": "2015-08-24"
-                   }
-                 ]
+                "solutions": 20,
+                "refundable": 'false'
               }
-          }
+            }
     g.get(data)
 
 
