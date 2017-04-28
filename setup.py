@@ -7,6 +7,7 @@ setup(name='google_flight_api',
   description='A simple wrapper for the google flight api',
   author='Yang Xu',
   author_email='yangxu432@gmail.com',
-  url='http://www.python.org/sigs/distutils-sig/',
+  url='https://github.com/yangxu/google_flight_api',
+  license="MIT",
   packages=['google_flight'],
 )
