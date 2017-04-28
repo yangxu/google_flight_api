@@ -5,6 +5,11 @@ google_flight_api
 
 A simple wrapper for the google flight api
 
+Installation
+=====
+
+    pip install google_flight_api
+    
 Usage
 =====
 
@@ -12,7 +17,7 @@ First, get yourself a `QPX Express Airfare API <https://developers.google.com/qp
 
 Test your json request https://qpx-express-demo.itasoftware.com/
 
-::
+
 
     from google_flight import google_flight_api
     import datetime
