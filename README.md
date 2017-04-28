@@ -15,22 +15,27 @@ Test your json request https://qpx-express-demo.itasoftware.com/
 ::
 
     from google_flight import google_flight_api
+    import datetime
 
+    start_date = datetime.datetime.now()
+    end_date = datetime.datetime.now()
+    start_date += datetime.timedelta(days=2)
+    end_date += datetime.timedelta(days=7)
 
     g = google_flight_api.GoogleFlight("MY_API_KEY")
     data = {
               "request": {
                 "slice": [
-                  {
-                    "origin": "PVD",
-                    "destination": "MCO",
-                    "date": "2016-12-04"
-                  },
-                  {
-                    "origin": "MCO",
-                    "destination": "PVD",
-                    "date": "2016-12-24"
-                  }
+                    {
+                      "origin": "PVD",
+                      "destination": "MCO",
+                      "date": start_date.strftime("%Y-%m-%d")  #"2017-08-04"
+                    },
+                    {
+                      "origin": "MCO",
+                      "destination": "PVD",
+                      "date": end_date.strftime("%Y-%m-%d") #"2017-08-24"
+                    }
                 ],
                 "passengers": {
                   "adultCount": 1,
@@ -68,5 +73,8 @@ Print out all the search result
 Print out json to readable
 
     g.readable(json_data)
-    
 
+
+Check you api key
+========
+https://console.cloud.google.com -> Go to APIs overview -> Credentials
