@@ -24,6 +24,7 @@ class GoogleFlight(object):
    def __init__(self, key):
        self.URL = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=%s'%key
        self.KEY = key
+       self.DEBUG = False
        self.request = None
        self.params = {}
        self.count = 0
@@ -42,11 +43,21 @@ class GoogleFlight(object):
           self.request = r
           data = json.loads(r.text)
 
-
        self.data = data
 
-       self.count = len(self.data["trips"]["tripOption"])
+       if self.DEBUG:
+          self.write(self.data)
+          
+       try:
+          self.count = len(self.data["trips"]["tripOption"])
+       except:
+           raise Exception(self.data)
        self.trips = self.data["trips"]["tripOption"]
+
+   def write(self, data):
+       f = open('debug.json', 'w')
+       f.write(str(data))
+       f.close()
 
    def readable(self,data):
       print json.dumps(data, indent=4, sort_keys=True)
